@@ -1,0 +1,140 @@
+<div class="p-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+      <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img
+            class="mx-auto h-12 w-auto"
+            src="../../../../assets/img/Jobhub.jpg"
+            alt="Your Company"
+          />
+          <h2
+            class="mt-10 text-2xl font-bold leading-9 tracking-tight text-gray-900"
+          >
+            Sign in to your account
+          </h2>
+
+          <p class="mt-2 text-sm text-gray-500">
+            Not a member?
+            <a routerLink="/auth/register" class="font-semibold leading-6 text-[#D55737] hover:text-[#E3734B]" >Sign up</a>
+          </p>
+        </div>
+  
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"class="space-y-6" >
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Email address</label
+              >
+              <div class="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  matInput formControlName="email"
+                  required
+                  class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+  
+            <div>
+              <div class="flex items-center justify-between">
+                <label
+                  for="password"
+                  class="block text-sm font-medium leading-6 text-gray-900"
+                  >Password</label
+                >
+              </div>
+              <div class="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  matInput formControlName="password"
+                  autocomplete="current-password"
+                  required
+                  class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+  
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-600"
+                />
+                <label for="remember-me" class="ml-2 block text-sm text-gray-900"
+                  >Remember me</label
+                >
+              </div>
+              <div class="text-sm">
+                <a
+                  href="#"
+                  class="font-semibold text-[#D55737] hover:text-[#E3734B]"
+                  >Forgot password?</a
+                >
+              </div>
+            </div>
+  
+            <div>
+              <button
+                type="submit"
+                class="flex w-full justify-center rounded-md bg-[#D55737] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#E3734B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                
+                >
+                Sign in
+              </button>
+            </div>
+          </form>
+  
+          <!-- Nueva sección de "o continuar con" -->
+          <div class="mt-6">
+            <div class="relative">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-300"></div>
+              </div>
+              <div class="relative flex justify-center text-sm">
+                <span class="bg-white px-2 text-gray-500">Or continue with</span>
+              </div>
+            </div>
+  
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                class="flex w-full justify-center rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm hover:bg-gray-50"
+              >
+                <img
+                  class="h-5 w-5 mr-2"
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                  alt="Google logo"
+                />
+                Google
+              </button>
+  
+              <button
+                type="button"
+                class="flex w-full justify-center rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm hover:bg-gray-50"
+              >
+                <img
+                  class="h-5 w-5 mr-2"
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                  alt="GitHub logo"
+                />
+                GitHub
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="hidden lg:block">
+        <img src="assets/img/woman.png" />
+      </div>
+    </div>
+  </div>  
