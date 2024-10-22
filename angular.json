@@ -21,18 +21,15 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-                "src/assets",
-                "src/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -95,9 +92,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "eb3db72f-b62e-44d7-8e4b-81408c4bcf40"
   }
-
 }
