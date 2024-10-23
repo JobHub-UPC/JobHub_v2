@@ -7,9 +7,9 @@ import { FooterComponent } from "../../../shared/components/footer/footer.compon
   selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, NavbarComponent, FooterComponent],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  templateUrl: './auth-layout.component.html',
+  styleUrl: './auth-layout.component.css'
 })
-export class LayoutComponent {
+export class AuthLayoutComponent {
 
 }

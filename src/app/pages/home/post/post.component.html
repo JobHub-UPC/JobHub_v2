@@ -1,0 +1,58 @@
+<div class="px-6">
+    <div
+      class="mx-auto mb-8 p-5 border border-gray-300 rounded-lg shadow-md w-full max-w-2xl"
+      *ngFor="let post of posts"
+    >
+      <div class="flex items-center">
+        <img
+          [src]="post.userImage"
+          alt="User Image"
+          class="w-14 h-14 rounded-full mr-3"
+        />
+        <div class="text-gray-700">
+          <span class="font-semibold">{{ post.userName }}</span
+          ><br />
+          <span class="text-xs">{{ post.userHandle }}</span
+          ><br />
+          <span class="text-xs">{{ post.time }}</span
+          ><br />
+        </div>
+      </div>
+      <div class="p-8">
+        <span>{{ post.title }}</span
+        ><br />
+        <span>{{ post.content }}</span>
+        <img
+          [src]="post.postImage"
+          alt="Post Image"
+          class="post-image w-full mt-2 rounded-lg"
+          *ngIf="post.postImage"
+        />
+        <iframe
+          [src]="post.postVideo"
+          class="post-image w-full mt-2 ml-12 rounded-lg"
+          *ngIf="post.postVideo"
+        ></iframe>
+      </div>
+  
+      <div class="ml-8 mb-5 flex">
+        <button
+          (click)="toggleLike(post)"
+          class="text-gray-700 hover:text-red-500 flex items-center"
+        >
+          <i class="fa-regular fa-heart mr-2" *ngIf="!post.liked"></i>
+          <i
+            class="fa-solid fa-heart mr-2"
+            style="color: #cb0101"
+            *ngIf="post.liked"
+          ></i>
+          Like {{ post.likes }}
+        </button>
+        <button
+          class="ml-8 text-gray-700 hover:text-blue-500 flex items-center ml-4"
+        >
+          <i class="fas fa-comment mr-2"></i> Comment {{ post.comments }}
+        </button>
+      </div>
+    </div>
+  </div>
