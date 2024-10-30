@@ -1,3 +1,15 @@
 <app-navbar></app-navbar>
 <app-post-input></app-post-input>
-<app-post></app-post>
+<br />
+
+<!-- Contenedor flex con ajuste de espacio en pantallas grandes -->
+<div class="flex flex-col md:flex-row">
+  <!-- Componente de recomendaciones (se oculta en pantallas pequeñas) -->
+  <app-recommendations class="flex-1"></app-recommendations>
+
+  <!-- Componente de publicaciones -->
+  <app-post class="flex-1"></app-post>
+
+  <!-- Componente de recomendaciones (se oculta en pantallas pequeñas) -->
+  <app-recommendations class="flex-1"></app-recommendations>
+</div>
