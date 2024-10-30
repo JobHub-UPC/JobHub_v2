@@ -1,10 +1,6 @@
 
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { JobDetailsComponent } from '../job-details/job-details.component';
-import { JobItemComponent } from '../job-item/job-item.component';
-import { JobRecommendationsComponent } from '../job-recommendations/job-recommendations.component';
 import { CommonModule } from '@angular/common';
-import { JobListComponent } from '../job-list/job-list.component';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
 
 export interface Job {
@@ -22,7 +18,7 @@ export interface Job {
 @Component({
   selector: 'app-job-layout',
   standalone: true,
-  imports: [JobDetailsComponent,CommonModule, JobListComponent, NavbarComponent],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './job-layout.component.html',
   styleUrl: './job-layout.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añadir esto aquí
