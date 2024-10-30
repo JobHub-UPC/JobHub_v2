@@ -1,16 +1,34 @@
-import { Component } from '@angular/core';
+
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { JobDetailsComponent } from '../job-details/job-details.component';
 import { JobItemComponent } from '../job-item/job-item.component';
 import { JobRecommendationsComponent } from '../job-recommendations/job-recommendations.component';
 import { CommonModule } from '@angular/common';
+import { JobListComponent } from '../job-list/job-list.component';
+import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
+
+export interface Job {
+  id: number;
+  title: string;
+  company: string;
+  location: string;
+  logo: string;
+  isVerified?: boolean;
+  timeAgo: string;
+  isPromoted?: boolean;
+  alumniCount?: number;
+}
 
 @Component({
   selector: 'app-job-layout',
   standalone: true,
-  imports: [JobDetailsComponent, JobItemComponent, JobRecommendationsComponent, CommonModule],
+  imports: [JobDetailsComponent,CommonModule, JobListComponent, NavbarComponent],
   templateUrl: './job-layout.component.html',
-  styleUrl: './job-layout.component.css'
+  styleUrl: './job-layout.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Añadir esto aquí
 })
+
+
 export class JobLayoutComponent {
 
   jobs = [
@@ -24,66 +42,42 @@ export class JobLayoutComponent {
       timeAgo: '1 día',
       isPromoted: false,
       isVerified: false,
+      alumniCount: 15,
+      description: 'Darás soporte al Latam Tool Depot Lead con el seguimiento de una gran cantidad de action points y cumplimiento de entregables...',
     },
     {
-      id: 1,
-      company: 'Sophilabs',
-      logo: '/placeholder.svg',
-      title: 'Junior Python Engineer',
+      id: 2,
+      company: 'BCP',
+      logo: '/assets/img/bcp.jpg',
+      title: 'hola Python Engineer',
       location: 'Uruguay, Departamento de Loreto, Perú (En remoto)',
+      type: 'Full-time',
+      timeAgo: '1 día',
+      isPromoted: true,
+      isVerified: true,
+      alumniCount: 20,
+      description: 'Será responsable de implementar y mantener servicios en Python para soportar el backend de nuestras aplicaciones...',
+    },
+    {
+      id: 3,
+      company: 'UPC',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png',
+      title: 'Junior Python Engineer',
+      location: 'Lima, Perú (En remoto)',
       type: 'Full-time',
       timeAgo: '1 día',
       isPromoted: false,
       isVerified: false,
+      alumniCount: 10,
+      description: 'Colaborarás con el equipo para desarrollar nuevas funcionalidades y mejorar la experiencia de usuario en nuestra plataforma...',
     },
-    {
-      id: 1,
-      company: 'Sophilabs',
-      logo: '/placeholder.svg',
-      title: 'Junior Python Engineer',
-      location: 'Uruguay, Departamento de Loreto, Perú (En remoto)',
-      type: 'Full-time',
-      timeAgo: '1 día',
-      isPromoted: false,
-      isVerified: false,
-    },
-    {
-      id: 1,
-      company: 'Sophilabs',
-      logo: '/placeholder.svg',
-      title: 'Junior Python Engineer',
-      location: 'Uruguay, Departamento de Loreto, Perú (En remoto)',
-      type: 'Full-time',
-      timeAgo: '1 día',
-      isPromoted: false,
-      isVerified: false,
-    },
-    // Add more jobs here...
+    // Agrega más trabajos aquí
   ];
 
   selectedJob: any = null;
 
-  onJobSelected(job: any) {
+  selectJob(job: any) {
     this.selectedJob = job;
   }
-
-  ngOnInit() {
-    this.jobs = [
-      {
-        id: 1,
-        company: 'Sophilabs',
-        logo: '/placeholder.svg',
-        title: 'Junior Python Engineer',
-        location: 'Uruguay, Departamento de Loreto, Perú (En remoto)',
-        type: 'Full-time',
-        timeAgo: '1 día',
-        isPromoted: false,
-        isVerified: false,
-      },
-      // Add more job objects as necessary
-    ];
-    console.log(this.jobs);  // Confirm this logs the job data
-  }
-  
 }
 

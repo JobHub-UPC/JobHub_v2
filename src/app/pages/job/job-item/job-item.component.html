@@ -1,24 +1,17 @@
-<div 
-  class="flex gap-4 p-4 border rounded-lg hover:border-blue-500 cursor-pointer" 
-  [class.bg-blue-50]="isSelected">
+<!-- job-list-item.component.html -->
+<div class="flex gap-4 p-4 border rounded-lg hover:border-blue-500 cursor-pointer"
+     [class.bg-blue-50]="selected">
   <img [src]="job.logo" [alt]="job.company" class="w-12 h-12 rounded"/>
   <div class="flex-1">
     <div class="flex items-center gap-2">
       <h3 class="font-medium text-blue-600">{{ job.title }}</h3>
-      <ng-container *ngIf="job.isVerified">
-        <svg class="w-4 h-4 text-blue-500" ...></svg>
-      </ng-container>
+      <svg *ngIf="job.isVerified" class="w-4 h-4 text-blue-500" ...></svg>
     </div>
     <p class="text-sm">{{ job.company }}</p>
     <p class="text-sm text-muted-foreground">{{ job.location }}</p>
     <div class="flex items-center gap-2 mt-2">
       <span class="text-sm text-muted-foreground">Hace {{ job.timeAgo }}</span>
-      <ng-container *ngIf="job.isPromoted">
-        <span class="text-xs bg-gray-100 px-2 py-1 rounded">Promocionado</span>
-      </ng-container>
+      <span *ngIf="job.isPromoted" class="text-xs bg-gray-100 px-2 py-1 rounded">Promocionado</span>
     </div>
   </div>
-  <button class="text-gray-400 hover:text-gray-600">
-    <svg class="w-5 h-5" ...></svg>
-  </button>
 </div>

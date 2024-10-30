@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { JobLayoutComponent } from '../job-layout/job-layout.component';
 import { CommonModule } from '@angular/common';
+import { Job } from '../job-layout/job-layout.component';
 
 @Component({
   selector: 'app-job-item',
@@ -10,6 +11,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './job-item.component.css'
 })
 export class JobItemComponent {
-  @Input() job: any;
-  @Input() isSelected: boolean = false;
+  @Input() job!: Job;
+  //@Input() isSelected: boolean = false; // Define `isSelected` como @Input
+
+  @Input() selected: boolean = false;
+
 }

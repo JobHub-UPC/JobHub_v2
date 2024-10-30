@@ -1,0 +1,10 @@
+<!-- job-list.component.html -->
+<div class="lg:col-span-5 space-y-4">
+    <app-job-item
+      *ngFor="let job of jobs"
+      [job]="job"
+      [selected]="selectedJob?.id === job.id"
+      (click)="selectJob(job)">
+    </app-job-item>
+  </div>
+  
