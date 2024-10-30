@@ -1,32 +1,31 @@
 <div class="hidden md:flex justify-center">
-    <div class="border p-4 rounded-md shadow-md w-full max-w-xs">
-      <h2 class="text-lg font-semibold mb-3">{{ title }}</h2>
-  
-      <div
-        *ngFor="let item of recommendations"
-        class="flex justify-between items-center mb-5"
-      >
-        <div class="flex items-center">
-          <img
-            [src]="item.image"
-            alt="{{ item.name }} logo"
-            class="w-10 h-10 rounded-full mr-3"
-          />
-          <div>
-            <span class="font-medium">{{ item.name }}</span
-            ><br />
-            <span class="text-sm text-gray-500">{{ item.category }}</span>
-          </div>
+  <div class="border p-4 rounded-md shadow-md w-full max-w-xs">
+    <h2 class="text-lg font-semibold mb-3">{{ title }}</h2>
+
+    <div
+      *ngFor="let item of recommendations"
+      class="flex justify-between items-center mb-5"
+    >
+      <div class="flex items-center">
+        <img
+          [src]="item.image"
+          alt="{{ item.name }} logo"
+          class="w-10 h-10 rounded-full mr-3"
+        />
+        <div>
+          <span class="font-medium">{{ item.name }}</span
+          ><br />
+          <span class="text-sm text-gray-500">{{ item.category }}</span>
         </div>
-        <button class="text-[#E3734B] font-semibold" (click)="toggleFollow(item)">
-          {{ item.isFollowing ? "Following" : "Follow" }}
-        </button>
       </div>
-  
-      <!-- Línea divisora -->
-      <hr class="my-3 border-t border-gray-300" />
-  
-      <button class="text-[#E3734B]">{{ viewAllText }}</button>
+      <button class="text-[#E3734B] font-semibold" (click)="toggleFollow(item)">
+        {{ item.isFollowing ? "Following" : "Follow" }}
+      </button>
     </div>
+
+    <!-- Línea divisora -->
+    <hr class="my-3 border-t border-gray-300" />
+
+    <button class="text-[#E3734B]">{{ viewAllText }}</button>
   </div>
-  
+</div>
