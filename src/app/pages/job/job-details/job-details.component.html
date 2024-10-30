@@ -1,0 +1,30 @@
+<div class="lg:col-span-7" *ngIf="job">
+    <div class="border rounded-lg p-6">
+      <div class="flex justify-between items-start mb-6">
+        <div class="flex gap-4">
+          <img [src]="job.logo" [alt]="job.company" class="w-16 h-16 rounded"/>
+          <div>
+            <h2 class="text-xl font-semibold">{{ job.title }}</h2>
+            <p class="text-lg">{{ job.company }}</p>
+            <p class="text-muted-foreground">{{ job.location }} · hace 1 día · {{ job.applications }} solicitudes</p>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <!-- Action Icons -->
+          <button class="p-2 rounded-full hover:bg-gray-100">
+            <svg class="w-5 h-5" ...></svg>
+          </button>
+          <button class="p-2 rounded-full hover:bg-gray-100">
+            <svg class="w-5 h-5" ...></svg>
+          </button>
+        </div>
+      </div>
+  
+      <!-- Job Actions -->
+      <app-job-actions></app-job-actions>
+  
+      <!-- Job Info Section -->
+      <app-job-info [job]="job"></app-job-info>
+    </div>
+  </div>
+  

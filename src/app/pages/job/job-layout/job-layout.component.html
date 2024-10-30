@@ -1,0 +1,5 @@
+<div class="max-w-7xl mx-auto px-4 py-6">
+    <app-job-recommendations [jobs]="jobs" [selectedJob]="selectedJob" (jobSelected)="onJobSelected($event)"></app-job-recommendations>
+    <app-job-details *ngIf="selectedJob" [job]="selectedJob"></app-job-details>
+  </div>
+  
