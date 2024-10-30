@@ -4,13 +4,13 @@
   
       <div
         *ngFor="let item of recommendations"
-        class="flex justify-between items-center mb-2"
+        class="flex justify-between items-center mb-5"
       >
         <div class="flex items-center">
           <img
             [src]="item.image"
             alt="{{ item.name }} logo"
-            class="w-8 h-8 rounded-full mr-3"
+            class="w-10 h-10 rounded-full mr-3"
           />
           <div>
             <span class="font-medium">{{ item.name }}</span
