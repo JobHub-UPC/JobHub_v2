@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="p-8">
+    <div class="max-w-6xl mx-auto">
+        <app-my-groups
+          [myGroups]="myGroups"
+          (leaveGroup)="toggleJoin($event)">
+        </app-my-groups>
+        <app-discover-groups
+          [discoverGroups]="discoverGroups"
+          (joinGroup)="toggleJoin($event)">
+        </app-discover-groups>
+    </div>
+</div>
