@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -11,9 +11,10 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class NavbarComponent {
   private authService = inject(AuthService);
-
+  isMenuOpen = false; // Controla la visibilidad del menú principal
+  isConfigMenuOpen = false;
   isAuthenticated: boolean = false;
-
+  private router = inject(Router)
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated();
   }
@@ -21,6 +22,22 @@ export class NavbarComponent {
   logout(): void {
       this.authService.logout();
       this.isAuthenticated = false;
+  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+  toggleConfigMenu() {
+    this.isConfigMenuOpen = !this.isConfigMenuOpen;
+  }
+
+  // Método para navegar a la página de contactos
+  navigateToContacts() {
+    this.router.navigate(['/contacts']);
+  }
+
+  // Método para navegar al perfil del usuario
+  goToProfile() {
+    this.router.navigate(['/profile']);
   }
 
 }

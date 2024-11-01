@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
+import { NavbarComponent } from '../../navbar/navbar.component';
 import { ProfileBodyComponent } from '../profile-body/profile-body.component';
 import { FriendsSuggestComponent } from '../friends-suggest/friends-suggest.component';
 
