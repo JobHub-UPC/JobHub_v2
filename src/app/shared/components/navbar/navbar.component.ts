@@ -32,12 +32,16 @@ export class NavbarComponent {
 
   // Método para navegar a la página de contactos
   navigateToContacts() {
-    this.router.navigate(['/contacts']);
+    this.router.navigate(['/applicant/contacts']);
   }
 
   // Método para navegar al perfil del usuario
   goToProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/applicant/profile']);
+  }
+
+  goToWork() {
+    this.router.navigate(['/applicant/work']);
   }
 
 }
