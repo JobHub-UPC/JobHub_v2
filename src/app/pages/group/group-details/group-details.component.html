@@ -1,0 +1,50 @@
+<div class="max-w-4xl mx-auto">
+    <!-- Group Header -->
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+      <img [src]="group.image" class="w-full h-64 object-cover">
+      <div class="p-6">
+        <div class="flex justify-between items-start">
+          <div>
+            <h1 class="text-3xl font-bold mb-2">{{group.name}}</h1>
+            <p class="text-gray-600">{{group.description}}</p>
+          </div>
+          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">
+            {{group.members}} members
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post Creation -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <textarea [(ngModel)]="newPost" 
+                class="w-full p-3 border rounded-lg resize-none"
+                rows="3"
+                placeholder="Share something with the group..."></textarea>
+      <div class="mt-3 flex justify-end">
+        <button (click)="createPost()" 
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Post
+        </button>
+      </div>
+    </div>
+
+    <!-- Posts List -->
+    <div class="space-y-6">
+      <div *ngFor="let post of posts" class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center mb-4">
+          <img [src]="post.authorAvatar" class="w-10 h-10 rounded-full mr-3">
+          <div>
+            <h3 class="font-bold">{{post.author}}</h3>
+            <p class="text-gray-500 text-sm">{{post.time}}</p>
+          </div>
+        </div>
+        <p class="text-gray-800 mb-4">{{post.content}}</p>
+        <div class="flex items-center space-x-4 text-gray-500">
+          <button class="hover:text-blue-600">👍 Like</button>
+          <button class="hover:text-blue-600">💬 Comment</button>
+          <button class="hover:text-blue-600">↗️ Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
