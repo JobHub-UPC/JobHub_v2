@@ -43,7 +43,7 @@ export class LoginComponent {
       next: () => {
         console.log('Inicio de sesión exitoso');
         
-        this.router.navigate(['/auth/register']);
+        this.router.navigate(['/applicant']);
       },
       error: () => {
         console.log('Error en el inicio de sesión. Por favor, intenta de nuevo.');
