@@ -1,7 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {environment} from '../../../environments/environments';
 import {HttpClient} from '@angular/common/http';
-import {StorageService} from './storage.service';
 import {Observable} from 'rxjs';
 import {JobCreateUpdateModel} from '../../shared/models/job-create-update.model';
 import {JobDetailsModel} from '../../shared/models/job-details.model';
