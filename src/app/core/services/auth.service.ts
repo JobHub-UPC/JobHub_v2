@@ -49,4 +49,10 @@ export class AuthService {
       const authData = this.storageService.getAuthData(); // Obtén los datos desde el StorageService
       return authData ? authData : null; // Retorna el objeto completo si existe, de lo contrario, null
     }
+
+      // Método para iniciar la recuperación de contraseña
+    forgotPassword(email: string): Observable<any> {
+      return this.http.post(`${this.baseURL}/forgot-password`, { email });
+    }
+    
   }
