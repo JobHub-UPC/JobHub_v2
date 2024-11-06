@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import { Routes } from "@angular/router";
+import { GroupLayoutComponent } from "./group-layout/group-layout.component";
 
-@Component({
-  selector: 'app-group',
-  standalone: true,
-  imports: [],
-  templateUrl: './group.component.html',
-  styleUrl: './group.component.css'
-})
-export class GroupComponent {
+export const groupRoutes: Routes = [
+    {
+      path: '',
+      component: GroupLayoutComponent,
 
-}
+    }
+  ];
