@@ -7,6 +7,7 @@ import { AuthResponse } from '../../shared/models/auth-response.model';
 })
 export class StorageService {
 
+
   private authKey = 'authToken';
 
   constructor() {}
@@ -19,6 +20,7 @@ export class StorageService {
     const data = localStorage.getItem(this.authKey);
     return data ? JSON.parse(data) as AuthResponse : null;
   }
+
 
   getAuthToken(): string | null {
     const data = localStorage.getItem(this.authKey);

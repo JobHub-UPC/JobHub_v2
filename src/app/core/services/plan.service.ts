@@ -13,5 +13,7 @@ export class PlanService {
   getPlans():Observable<PlanDetails[]>{
     return this.http.get<PlanDetails[]>(`${this.baseUrl}`);
   }
-
+  getPlanById(id:number):Observable<PlanDetails>{
+    return this.http.get<PlanDetails>(`${this.baseUrl}/${id}`);
+  }
 }
