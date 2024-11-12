@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../../../shared/components/navbar/navbar.component';
 import { JobDetailsModel } from '../../../../shared/models/job-details.model';
 import { JobService } from '../../../../core/services/job.service';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { ApplicationService } from '../../../../core/services/application.service';
 import { ApplicantService } from '../../../../core/services/applicant.service';
 import { AuthService } from '../../../../core/services/auth.service';
@@ -27,7 +27,7 @@ export interface Job {
 @Component({
   selector: 'app-job-layout',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, RouterLink],
   templateUrl: './job-layout.component.html',
   styleUrl: './job-layout.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
