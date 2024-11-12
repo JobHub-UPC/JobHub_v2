@@ -1,4 +1,3 @@
-
 import { authInverseGuard } from './core/guards/auth-inverse.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { HomeComponent } from './pages/home/home-layout/home-layout.component';
@@ -25,5 +24,11 @@ export const routes: Routes = [
     {
       path:'company',loadChildren:()=>import('./pages/company/company.routes').then(m=>m.companyRoutes),
       canActivate:[authGuard]
+    },
+    {
+      path:'subscription',loadChildren:()=>import('./shared/components/subscription-plan/suscription-plan.routes').then(m=>m.subscriptionPlanRoutes),
+      canActivate:[authGuard]
+
     }
-]
+];
+

@@ -6,4 +6,5 @@ export interface JobCreateUpdateModel {
   description:string;
   jobType:string;
   location:string;
+  companyId:number;
 }

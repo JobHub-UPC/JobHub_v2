@@ -12,14 +12,14 @@ import { environment } from '../../../environments/environments';
     providedIn: 'root'
   })
 export class AuthService {
-  
+
     private baseURL = `${environment.apiUrl}/auth`;  // Ajusta el endpoint según tu API
-  
+
     private http= inject(HttpClient);
     private storageService = inject(StorageService);
-  
+
     constructor() { }
-  
+
     // operador tap de RxJS. El operador tap se usa para ejecutar efectos secundarios,
     //como guardar los datos de autenticación en el local storage, sin modificar los datos que se están pasando a través del observable.
     login(authRequest: AuthRequest): Observable<AuthResponse> {
@@ -27,28 +27,29 @@ export class AuthService {
         tap(response => this.storageService.setAuthData(response))
       );
     }
-  
+
     register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
       return this.http.post<RegisterResponse>(`${this.baseURL}/register/applicant`, registerRequest);
     }
-  
+
     logout(): void {
       this.storageService.clearAuthData();
     }
-  
+
     isAuthenticated(): boolean {
       return this.storageService.getAuthData() !== null;
     }
-  
+
     getUserRole(): string | null {
       const authData = this.storageService.getAuthData();
       return authData ? authData.role : null;
     }
-  
+
     getUser(): AuthResponse | null {
       const authData = this.storageService.getAuthData(); // Obtén los datos desde el StorageService
       return authData ? authData : null; // Retorna el objeto completo si existe, de lo contrario, null
     }
+
 
     
   }
