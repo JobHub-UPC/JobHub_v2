@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-6">
+  <div
+    *ngIf="followUp; else loading"
+    class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8"
+    [@fadeIn]>
+
+    <h2 class="text-3xl font-bold mb-6 text-indigo-800 border-b pb-3"
+        [@slideIn]>
+      Ficha de Seguimiento
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
+         [@cardAnimation]>
+      <div class="bg-indigo-50 p-4 rounded-lg">
+        <p class="text-sm text-indigo-600 font-medium">Nombre del Postulante</p>
+        <p class="text-lg font-semibold">{{ followUp.applicantName }}</p>
+      </div>
+
+      <div class="bg-indigo-50 p-4 rounded-lg">
+        <p class="text-sm text-indigo-600 font-medium">Estado Actual</p>
+        <p class="text-lg font-semibold">{{ followUp.status }}</p>
+      </div>
+
+      <div class="bg-indigo-50 p-4 rounded-lg md:col-span-2">
+        <p class="text-sm text-indigo-600 font-medium">Fase del Trabajo</p>
+        <p class="text-lg font-semibold">{{ followUp.jobPhaseName }}</p>
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <div *ngFor="let phase of phases; let i = index"
+           class="phase-container"
+           [@phaseAnimation]="{value: '', params: {delay: i * 200}}">
+
+        <div class="relative bg-white p-6 rounded-xl border border-indigo-100 hover:shadow-md transition-all duration-300">
+          <p class="text-xl font-semibold text-indigo-900 mb-4">{{ phase.name }}</p>
+
+          <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              class="h-full rounded-full transition-all duration-1000 ease-out"
+              [style.width]="getPhaseProgress(phase)"
+              [class.bg-green-500]="getPhaseProgress(phase) === '100%'"
+              [class.bg-yellow-500]="getPhaseProgress(phase) === '50%'"
+              [class.bg-red-500]="getPhaseProgress(phase) === '0%'"
+              [@progressAnimation]>
+            </div>
+          </div>
+
+          <div class="mt-2 flex justify-between items-center">
+                <span class="text-sm font-medium"
+                      [class.text-green-600]="getPhaseProgress(phase) === '100%'"
+                      [class.text-yellow-600]="getPhaseProgress(phase) === '50%'"
+                      [class.text-red-600]="getPhaseProgress(phase) === '0%'">
+                  {{ getPhaseProgress(phase) === '100%' ? 'Completada' :
+                  getPhaseProgress(phase) === '50%' ? 'En Progreso' : 'Pendiente' }}
+                </span>
+            <span class="text-sm text-indigo-600">{{ getPhaseProgress(phase) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <div class="flex justify-center items-center min-h-[400px]"
+         [@pulseAnimation]>
+      <div class="text-center">
+        <div class="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p class="text-xl text-indigo-800 font-medium">Cargando seguimiento...</p>
+      </div>
+    </div>
+  </ng-template>
+</div>

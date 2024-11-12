@@ -1,0 +1,51 @@
+<div class="flex flex-col h-[100vh] p-6">
+  <div class="flex flex-row justify-start mb-4">
+    <h2 class="text-[30px] font-bold">Carrito de Compras</h2>
+  </div>
+@if(planId!=null){
+  <div class="grid grid-cols-2 place-items-center">
+    <!-- Columna 1: Detalles del Plan -->
+    <div class="grid grid-cols-2 rounded-2xl bg-white p-8 shadow-lg border border-gray-100 max-w-[600px]">
+      <div class="space-y-2">
+        <span class="block font-medium">Plan ID: {{ planId || 'Sin seleccionar' }}</span>
+      </div>
+      <div>
+        <img src="assets/img/JobHub_tarjet.png" alt="tarjet" class="w-[300px]" />
+      </div>
+    </div>
+
+    <!-- Columna 2: Campo de entrada y botón de pago -->
+    <div class="rounded-2xl bg-white p-8 shadow-lg border border-gray-100 max-w-[300px]">
+      <form [formGroup]="userSubscriptionForm" (ngSubmit)="buySubscription()">
+        <!-- Campo de entrada para Meses -->
+        <div>
+          <label for="months" class="block text-sm font-medium text-gray-700">Meses</label>
+          <input
+            type="number"
+            id="months"
+            formControlName="months"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            placeholder="1"
+          />
+          <div *ngIf="userSubscriptionForm.get('months')?.invalid && userSubscriptionForm.get('months')?.touched">
+            <small class="text-red-500">Debes ingresar un número válido de meses (mínimo 1).</small>
+          </div>
+        </div>
+
+        <!-- Botón de Pagar -->
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 disabled:bg-gray-300"
+          [disabled]="userSubscriptionForm.invalid || !planId"
+        >
+          <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal Checkout">
+        </button>
+      </form>
+    </div>
+  </div>
+} @else {
+  <div>
+    <p class="text-red-500">Debes seleccionar un plan de suscripción antes de continuar.</p>
+  </div>
+}
+</div>
