@@ -26,6 +26,4 @@ export const routes: Routes = [
       path:'company',loadChildren:()=>import('./pages/company/company.routes').then(m=>m.companyRoutes),
       canActivate:[authGuard]
     }
-
-
-];
+]

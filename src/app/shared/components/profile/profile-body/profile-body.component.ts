@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
+import { AuthService } from './../../../../core/services/auth.service';
+import { UserProfileService } from './../../../../core/services/user-profile.service';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { UserProfile } from '../../../models/user-profile.model';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Importar MatSnackBar
+import { ApplicantResponse } from '../../../models/applicant-response.model';
 
 @Component({
   selector: 'app-profile-body',
@@ -8,7 +14,54 @@ import { CommonModule } from '@angular/common';
   templateUrl: './profile-body.component.html',
   styleUrl: './profile-body.component.css',
 })
-export class ProfileBodyComponent {
+export class ProfileBodyComponent implements OnInit {
+  
+  profile!: ApplicantResponse
+
+  private userProfileService = inject(UserProfileService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
+
+  ngOnInit(): void {
+    this.loadUserProfile();
+  }
+
+  loadUserProfile(): void {
+    const authData = this.authService.getUser();
+    console.log(authData);
+    const userId = authData?.id;
+    console.log(userId);
+
+    if (userId) {
+      this.userProfileService.getUserProfile(userId).subscribe({
+        next: (profile) => {
+          this.profile = profile;
+          console.log(profile);
+          this.showSnackBar('Perfil cargado con éxito');
+        },
+        error: (error) => {
+
+          this.showSnackBar('Error al cargar el perfil');
+        }
+      });
+    } else {
+
+      this.showSnackBar('Usuario no autenticado');
+      this.router.navigate(['/auth/login']);
+    }
+  }
+
+  navigateToUpdateProfile():void {
+    this.router.navigate(['applicant/profile/update']);
+  }
+
+  private showSnackBar(message: string): void {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
+    });
+  }
+
   // Paths for images
   coverImage = 'assets/img/bcp.jpg';
   profileImage = 'assets/img/carla.jpg';
@@ -16,22 +69,12 @@ export class ProfileBodyComponent {
     'https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png';
 
   // Profile data
-  name = 'Carla Rodriguez';
-  title = 'Computer science student';
-  location = 'Perú';
-  email = 'juana@gmail.com';
-  phone = '9784562163';
   contactsCount = 7;
-  universityName = 'Universidad Peruana de Ciencias Aplicadas';
-
-  description = [
-    'Soy Carla Rodriguez, ceo de BCP, comprometida y apasionada por la tecnología. Siempre estoy en la búsqueda de nuevos desafíos y oportunidades de aprendizaje para expandir mis conocimientos y habilidades. Mi interés principal radica en los campos de la ciencia de datos, la inteligencia artificial y el desarrollo web. Estoy dedicada a profundizar en estos ámbitos, aplicando tanto mis conocimientos teóricos como mis habilidades prácticas en proyectos innovadores y colaborativos.Me motiva la idea de usar la tecnología para resolver problemas complejos y mejorar la vida de las personas. Siempre estoy abierta a conectar con otros profesionales y aprender de diversas experiencias en la industria tecnológica.',
-  ];
 
   // Data for education items
+  /*
   educationItems = [
     {
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png',
       institution: 'Universidad Peruana de Ciencias Aplicadas',
       fieldOfStudy: 'Ciencias de la computación',
       startDate: 'mar. 2022',
@@ -51,4 +94,6 @@ export class ProfileBodyComponent {
       },
     },
   ];
+  */
+
 }
