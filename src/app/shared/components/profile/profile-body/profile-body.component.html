@@ -23,6 +23,7 @@
         />
       </div>
       <button
+        (click)="navigateToUpdateProfile()"
         type="button"
         class="mt-2 p-2 rounded-full bg-gray-100 hover:bg-gray-200"
       >
@@ -47,13 +48,13 @@
     <div class="grid grid-cols-2 gap-4">
       <!-- Primera columna -->
       <div>
-        <h2 class="text-2xl font-bold">{{ name }}</h2>
-        <p class="mt-1 mb-1 text-gray-700">{{ title }}</p>
+        <h2 class="text-2xl font-bold">{{ profile.firstName + " " + profile.lastName }}</h2>
+        <p class="mt-1 mb-1 text-gray-700">{{ profile.degree }}</p>
 
-        <span class="text-sm text-blue-600">{{ email }}</span> ·
-        <span class="text-gray-600">{{ phone }}</span>
+        <span class="text-sm text-blue-600">{{ profile.email }}</span> ·
+        <span class="text-gray-600">{{ profile.phone }}</span>
         <p class="mt-1 text-sm text-gray-500">
-          {{ location }} ·
+          {{ profile.country }} ·
           <span class="text-sm text-blue-600 mt-1"
             >{{ contactsCount }} contactos</span
           >
@@ -63,7 +64,7 @@
       <!-- Segunda columna -->
       <div class="flex items-center space-x-2 mt-4">
         <img [src]="universityLogo" alt="University logo" class="h-8 w-8" />
-        <span class="text-sm">{{ universityName }}</span>
+        <span class="text-sm">{{ profile.college }}</span>
       </div>
     </div>
   </div>
@@ -78,7 +79,7 @@
   </div>
 
   <div class="p-6 space-y-6">
-    <span class="text-sm text-gray-600">{{ description }}</span>
+    <span class="text-sm text-gray-600">{{ profile.description }}</span>
   </div>
 </div>
 
@@ -92,19 +93,14 @@
 
   <!-- Card Content -->
   <div class="p-4 space-y-6">
-    <div *ngFor="let item of educationItems" class="flex items-start space-x-4">
-      <div class="flex-shrink-0">
-        <img
-          [src]="item.logo"
-          alt="{{ item.institution }} logo"
-          class="w-12 h-12 rounded-full"
-        />
-      </div>
+    <div class="flex items-start space-x-4">
       <div class="flex-grow">
-        <h3 class="font-semibold">{{ item.institution }}</h3>
-        <p class="text-sm text-gray-600">{{ item.fieldOfStudy }}</p>
+        <h3 class="font-semibold">{{ profile.college }}</h3>
+        <p class="text-sm text-gray-600">{{ profile.degree }}</p>
+        <!--
         <p class="text-sm text-gray-500">{{ item.startDate }}</p>
         <span class="text-sm text-gray-600">{{ item.additionalInfo }}</span>
+        
         <div *ngIf="item.certificate" class="mt-4 flex items-start space-x-4">
           <img
             [src]="item.certificate.thumbnail"
@@ -118,6 +114,7 @@
             </p>
           </div>
         </div>
+      -->
       </div>
     </div>
   </div>
