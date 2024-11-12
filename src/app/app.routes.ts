@@ -23,5 +23,3 @@ export const routes: Routes = [
         path:'community',loadChildren:()=>import('./pages/group/group.routes').then(m=>m.groupRoutes),
         canActivate:[authGuard]
     }
-
-];
