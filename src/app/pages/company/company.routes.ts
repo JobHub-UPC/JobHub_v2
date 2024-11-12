@@ -7,8 +7,10 @@ export const companyRoutes: Routes = [
   {
     path:'', component: LayoutComponent,
     children:[
+      { path: '', redirectTo: 'job', pathMatch: 'full' },  // This redirects to 'job' on the root path
       {path:'job',component:JobComponent},
       {path:'job-register',component:JobRegisterComponent}
     ]
-  }
+  },
+
 ]

@@ -28,6 +28,5 @@ export const routes: Routes = [
     {
       path:'subscription',loadChildren:()=>import('./shared/components/subscription-plan/suscription-plan.routes').then(m=>m.subscriptionPlanRoutes),
       canActivate:[authGuard]
-
     }
 ];

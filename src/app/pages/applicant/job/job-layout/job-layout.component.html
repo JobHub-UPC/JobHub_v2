@@ -1,28 +1,27 @@
 <div class="max-w-7xl mx-auto px-4 py-6">
     <h1 class="text-xl font-semibold mb-4">Principales empleos que te recomendamos</h1>
     <p class="text-sm text-muted-foreground mb-6">{{ jobs.length }} resultados</p>
-    
+
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Columna Izquierda - Lista de Empleos -->
         <div class="lg:col-span-5 space-y-4">
-            <div *ngFor="let job of jobs" class="flex gap-4 p-4 border rounded-lg hover:border-blue-500 cursor-pointer" 
+            <div *ngFor="let job of jobs" class="flex gap-4 p-4 border rounded-lg hover:border-blue-500 cursor-pointer"
                  [class.bg-blue-50]="selectedJob?.id === job.id"
                  (click)="selectJob(job)">
-                <img [src]="job.logo" [alt]="job.company" class="w-12 h-12 rounded"/>
                 <div class="flex-1">
                     <div class="flex items-center gap-2">
                         <h3 class="font-medium text-blue-600">{{ job.title }}</h3>
-                        <ng-container *ngIf="job.isVerified">
+                        <ng-container *ngIf="job.companyName">
                             <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"/>
                             </svg>
                         </ng-container>
                     </div>
-                    <p class="text-sm">{{ job.company }}</p>
+                    <p class="text-sm">{{ job.companyName }}</p>
                     <p class="text-sm text-muted-foreground">{{ job.location }}</p>
                     <div class="flex items-center gap-2 mt-2">
-                        <span class="text-sm text-muted-foreground">Hace {{ job.timeAgo }}</span>
-                        <span *ngIf="job.isPromoted" class="text-xs bg-gray-100 px-2 py-1 rounded">Promocionado</span>
+                        <span class="text-sm text-muted-foreground">Hace {{ job.postedDate }}</span>
+                        <span *ngIf="job.jobType" class="text-xs bg-gray-100 px-2 py-1 rounded">Promocionado</span>
                     </div>
                 </div>
             </div>
@@ -34,7 +33,6 @@
                 <div class="border rounded-lg p-6">
                     <div class="flex justify-between items-start mb-6">
                         <div class="flex gap-4">
-                            <img [src]="selectedJob.logo" [alt]="selectedJob.company" class="w-16 h-16 rounded"/>
                             <div>
                                 <h2 class="text-xl font-semibold">{{ selectedJob.title }}</h2>
                                 <p class="text-lg">{{ selectedJob.company }}</p>
@@ -44,7 +42,7 @@
                     </div>
 
                     <div class="flex gap-4 mb-6">
-                        <button class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700">
+                        <button class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700" (click)="applyToJob(selectedJob)">
                             Solicitar
                         </button>
                         <button class="px-6 py-2 border rounded-full hover:bg-gray-50">

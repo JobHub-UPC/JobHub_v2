@@ -8,9 +8,11 @@ export const applicantRoutes:Routes=[
     path:'',
     component:LayoutComponent,
     children:[
+      {path:'',redirectTo:'job',pathMatch:'full'},
         {path:'job',component:JobLayoutComponent},
         {path:'contacts',component:ContactsLayoutComponent},
-        {path:'profile',component:ProfileLayoutComponent}
+        {path:'profile',component:ProfileLayoutComponent},
+        {path:'application',loadChildren:()=>import('./application/application.routes').then(m=>m.applicationRoutes)}
     ]
 }
 ]
