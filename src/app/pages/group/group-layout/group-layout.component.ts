@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
 import { MyGroupsComponent } from '../my-groups/my-groups.component';
 import { DiscoverGroupsComponent } from '../discover-groups/discover-groups.component';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-group-layout',
