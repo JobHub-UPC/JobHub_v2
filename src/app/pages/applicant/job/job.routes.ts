@@ -5,6 +5,5 @@ export const homeRoutes: Routes = [
     {
       path: '',
       component: JobLayoutComponent,
-  
     }
   ];

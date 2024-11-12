@@ -5,6 +5,5 @@ export const groupRoutes: Routes = [
     {
       path: '',
       component: GroupLayoutComponent,
-  
     }
   ];
