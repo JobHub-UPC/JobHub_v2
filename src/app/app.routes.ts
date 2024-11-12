@@ -4,7 +4,6 @@ import { authInverseGuard } from './core/guards/auth-inverse.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { HomeComponent } from './pages/home/home-layout/home-layout.component';
 import { Routes } from '@angular/router';
-import { ForgotPasswordComponent } from './pages/auth/forgot-password/forgot-password.component';
 
 
 export const routes: Routes = [
@@ -21,8 +20,8 @@ export const routes: Routes = [
         canActivate:[authInverseGuard]
     },
     {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent,
-        canActivate:[authInverseGuard],
+        path:'community',loadChildren:()=>import('./pages/group/group.routes').then(m=>m.groupRoutes),
+        canActivate:[authGuard]
     }
+
 ];

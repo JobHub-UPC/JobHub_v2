@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 import { GroupLayoutComponent } from "./group-layout/group-layout.component";
 
-export const homeRoutes: Routes = [
+export const groupRoutes: Routes = [
     {
       path: '',
       component: GroupLayoutComponent,
