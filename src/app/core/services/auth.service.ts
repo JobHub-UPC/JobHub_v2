@@ -49,4 +49,7 @@ export class AuthService {
       const authData = this.storageService.getAuthData(); // Obtén los datos desde el StorageService
       return authData ? authData : null; // Retorna el objeto completo si existe, de lo contrario, null
     }
+
+
+    
   }
