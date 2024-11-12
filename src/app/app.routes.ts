@@ -1,5 +1,4 @@
 
-import { ProfileLayoutComponent } from './shared/components/profile/profile-layout/profile-layout.component';
 import { authInverseGuard } from './core/guards/auth-inverse.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { HomeComponent } from './pages/home/home-layout/home-layout.component';
@@ -22,5 +21,9 @@ export const routes: Routes = [
     {
         path:'community',loadChildren:()=>import('./pages/group/group.routes').then(m=>m.groupRoutes),
         canActivate:[authGuard]
+    },
+    {
+      path:'company',loadChildren:()=>import('./pages/company/company.routes').then(m=>m.companyRoutes),
+      canActivate:[authGuard]
     }
 ]
