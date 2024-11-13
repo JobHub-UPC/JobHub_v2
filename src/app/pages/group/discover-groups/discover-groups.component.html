@@ -1,20 +1,29 @@
 <div class="mt-8">
-    <h2 class="text-2xl font-bold mb-4">Discover Groups</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div *ngFor="let group of discoverGroups" class="bg-white rounded-lg shadow overflow-hidden">
-        <img [src]="group.image" class="group-image">
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">{{group.name}}</h3>
-          <p class="text-gray-600 mb-4">{{group.description}}</p>
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">{{group.members}} members</span>
-            <button class="bg-[#F26430] text-white px-4 py-2 rounded-full hover:opacity-90"
-                    (click)="joinGroup.emit(group)">
-              Join Group
-            </button>
-          </div>
+  <h2 class="text-2xl font-bold mb-4">Discover Groups</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div *ngFor="let group of discoverGroups" class="bg-white rounded-lg shadow overflow-hidden">
+      <!--<img [src]="group.image" class="group-image">-->
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2">{{ group.name }}</h3>
+        <p class="text-gray-600 mb-4">{{ group.description }}</p>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-500">{{ group.membersCount }} members</span>
+
+          <span *ngIf="group.isPrivate" class="bg-red-200 text-green-800 text-xs px-3 py-1 rounded-full">Private</span>
+          <span *ngIf="!group.isPrivate" class="bg-blue-200 text-green-800 text-xs px-3 py-1 rounded-full">Public</span>
+
+          <button
+            class="px-4 py-2 rounded-full hover:opacity-90"
+            [ngClass]="{
+              'bg-gray-400 text-gray-800': group.isPrivate && group.isPending,
+              'bg-[#F26430] text-white': !(group.isPrivate && group.isPending)
+            }"
+            (click)="onJoinGroup(group)"
+            [disabled]="group.isPending">
+            {{ group.isPrivate && group.isPending ? 'Pending' : 'Join Group' }}
+          </button>
         </div>
       </div>
     </div>
   </div>
-
+</div>

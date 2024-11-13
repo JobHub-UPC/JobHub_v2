@@ -1,8 +1,7 @@
-
-    <h2 class="text-2xl font-bold mb-4">My Groups</h2>
+<h2 class="text-2xl font-bold mb-4">My Groups</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
   <div *ngFor="let group of myGroups" class="bg-white rounded-lg shadow overflow-hidden">
-    <img [src]="group.image" class="group-image">
+    <!--<img [src]="group.image" alt="{{group.name}} image" class="group-image">-->
     <div class="p-4">
       <div class="flex items-center justify-between mb-2">
         <h3 class="text-xl font-bold">{{group.name}}</h3>
@@ -10,10 +9,11 @@
       </div>
       <p class="text-gray-600 mb-4">{{group.description}}</p>
       <div class="flex items-center justify-between">
-        <span class="text-sm text-gray-500">{{group.members}} members</span>
+        <span class="text-sm text-gray-500">{{group.membersCount}} members</span>
         
-        <button class="bg-[#DEE7E7] text-gray-700 px-4 py-2 rounded-full hover:opacity-90"
-                (click)="leaveGroup.emit(group)">
+        <button 
+          class="bg-[#DEE7E7] text-gray-700 px-4 py-2 rounded-full hover:opacity-90"
+          (click)="onLeaveGroup(group)">
           Leave Group
         </button>
       </div>
