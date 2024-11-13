@@ -22,6 +22,7 @@ export class NavbarComponent {
 
   logout(): void {
       this.authService.logout();
+      this.router.navigate(['/auth/login']);
       this.isAuthenticated = false;
   }
   toggleMenu() {
