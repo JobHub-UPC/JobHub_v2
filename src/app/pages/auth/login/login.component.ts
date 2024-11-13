@@ -25,12 +25,12 @@ export class LoginComponent {
     });
   }
 
-  
+
   controlHasError(control: string, error: string) {
     return this.loginForm.controls[control].hasError(error);
   }
 
-  
+
   onSubmit() {
     if (this.loginForm.invalid) {
       console.log('Error');
@@ -42,8 +42,7 @@ export class LoginComponent {
     this.authService.login(credentials).subscribe({
       next: () => {
         console.log('Inicio de sesión exitoso');
-        
-        this.router.navigate(['/applicant']);
+        this.router.navigate(['/home']);
       },
       error: () => {
         console.log('Error en el inicio de sesión. Por favor, intenta de nuevo.');

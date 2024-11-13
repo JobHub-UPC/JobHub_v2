@@ -47,15 +47,21 @@
               <i class="fa-duotone fa-solid fa-user-group"></i>
               <a routerLink="/community" class="mt-1">Community</a>
             </div>
-
-            <div
-              class="flex flex-col items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-[#E3734B] hover:text-white"
-              (click)="goToWork()"
+            @if (getRole()=="Applicant"){
+            <div class="flex flex-col items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-[#E3734B] hover:text-white"
+            (click)="goToWorkApplicant()"
             >
-              <i class="fa-solid fa-briefcase"></i>
-              <a routerLink="/applicant/job" class="mt-1">Work</a>
+                <i class="fa-solid fa-briefcase"></i>
+                <a class="mt-1">Work</a>
             </div>
-
+            }@else{
+              <div class="flex flex-col items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-[#E3734B] hover:text-white"
+                   (click)="goToWorkCompany()"
+              >
+                <i class="fa-solid fa-briefcase"></i>
+                <a class="mt-1">Work</a>
+              </div>
+            }
             <div
               class="flex flex-col items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-[#E3734B] hover:text-white"
               (click)="navigateToContacts()"

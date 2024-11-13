@@ -34,4 +34,7 @@ export class PlanComponent {
     console.log('Plan seleccionado',id);
     this.router.navigate(['subscription/subscriptionPay']);
   }
+  viewSubscriptionHistory() {
+    this.router.navigate(['subscription/history']);
+  }
 }
