@@ -7,7 +7,6 @@ import { AuthResponse } from '../../shared/models/auth-response.model';
 })
 export class StorageService {
 
-
   private authKey = 'authToken';
 
   constructor() {}
