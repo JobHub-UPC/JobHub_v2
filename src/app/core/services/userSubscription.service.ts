@@ -14,5 +14,8 @@ export class UserSubscriptionService {
   registerSubscription(registration:UserSubscriptionRequest):Observable<UserSubscriptionResponse>{
     return this.http.post<UserSubscriptionResponse>(`${this.baseURL}`,registration);
   }
+  getHistory():Observable<UserSubscriptionResponse[]>{
+    return this.http.get<UserSubscriptionResponse[]>(`${this.baseURL}/user`);
+  }
 
 }

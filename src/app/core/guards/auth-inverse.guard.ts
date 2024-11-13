@@ -9,9 +9,9 @@ export const authInverseGuard: CanActivateFn = (route, state) => {
   if (authService.isAuthenticated()) {
     const userRole = authService.getUserRole();
     if (userRole === 'Company') {
-      router.navigate(['/company']);
+      router.navigate(['/home']);
     } else if (userRole === 'Applicant') {
-      router.navigate(['/applicant']);
+      router.navigate(['/home']);
     }
     return false; // Bloquea el acceso a la ruta de autenticación
   }

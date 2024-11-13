@@ -19,6 +19,9 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated();
   }
+  getRole(){
+    return this.authService.getUser()?.role;
+  }
 
   logout(): void {
       this.authService.logout();
@@ -42,8 +45,12 @@ export class NavbarComponent {
     this.router.navigate(['/applicant/profile']);
   }
 
-  goToWork() {
-    this.router.navigate(['/applicant/work']);
+  goToWorkApplicant() {
+  this.router.navigate(['/applicant/job']);
   }
+  goToWorkCompany() {
+    this.router.navigate(['/company/job']);
+  }
+
 
 }
