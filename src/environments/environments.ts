@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:8080/api/v1'  ,// Ajusta la URL según sea necesario
-    paypalReturnUrl: 'http://localhost:4200/subscription/plans'
+  apiUrl: 'https://jobhub-api-latest-ynn8.onrender.com/api/v1',
+  paypalReturnUrl: 'http://my-app-en-produccion/subscription/plans'
   };
 
