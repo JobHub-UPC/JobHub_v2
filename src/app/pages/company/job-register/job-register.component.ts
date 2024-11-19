@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {JobCreateUpdateModel} from '../../../shared/models/job-create-update.model';
 import {AuthService} from '../../../core/services/auth.service';
 import {CompanyService} from '../../../core/services/company.service';
@@ -21,6 +21,7 @@ export class JobRegisterComponent {
   private companyService=inject(CompanyService);
   private jobService=inject(JobService);
   private jobPhaseService=inject(JobPhaseService);
+  private router=inject(Router)
   jobForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
@@ -77,7 +78,9 @@ export class JobRegisterComponent {
         this.jobService.register(formData).subscribe({
           next: (job) => {
             console.log('Trabajo registrado', job);
-            this.savePhases(job.id); // Guarda las fases después de registrar el trabajo
+            this.savePhases(job.id);
+            this.router.navigate(['/company/jobs']);
+            // Guarda las fases después de registrar el trabajo
           },
           error: (error) => {
             console.error('Error al registrar el trabajo', error);
