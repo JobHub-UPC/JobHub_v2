@@ -1,0 +1,50 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-6">
+  <div *ngIf="followUp; else loading" class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+    <h2 class="text-3xl font-bold mb-6 text-blue-800 border-b pb-3">Editar Seguimiento</h2>
+    <div class="grid grid-cols-1 gap-6 mb-8">
+
+      <!-- Nombre del postulante -->
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <p class="text-sm text-blue-600 font-medium">Nombre del Postulante</p>
+        <p class="text-lg font-semibold">{{ followUp.applicantName }}</p>
+      </div>
+
+      <!-- Estado de la postulación -->
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <p class="text-sm text-blue-600 font-medium">Estado Actual</p>
+        <select [(ngModel)]="followUp.status" class="w-full p-2 border rounded-lg">
+          <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+
+      <!-- Fase de la postulación -->
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <p class="text-sm text-blue-600 font-medium">Fase de la Postulación</p>
+        <select [(ngModel)]="followUp.jobphase_id" class="w-full p-2 border rounded-lg">
+          <option *ngFor="let phase of phases" [value]="phase.id">{{ phase.name }}</option>
+        </select>
+      </div>
+
+
+    </div>
+
+    <!-- Botones de acción -->
+    <button (click)="updateStatus()" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 mb-4">
+      Guardar Cambios en Estado
+    </button>
+
+    <button (click)="updatePhase()" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700">
+      Actualizar Fase
+    </button>
+
+  </div>
+
+  <ng-template #loading>
+    <div class="flex justify-center items-center min-h-[400px]">
+      <div class="text-center">
+        <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p class="text-xl text-blue-800 font-medium">Cargando seguimiento...</p>
+      </div>
+    </div>
+  </ng-template>
+</div>

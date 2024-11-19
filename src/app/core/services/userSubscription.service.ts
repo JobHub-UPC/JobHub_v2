@@ -17,5 +17,8 @@ export class UserSubscriptionService {
   getHistory():Observable<UserSubscriptionResponse[]>{
     return this.http.get<UserSubscriptionResponse[]>(`${this.baseURL}/user`);
   }
+  confirmSubscription(subscriptionId:number):Observable<UserSubscriptionResponse>{
+    return this.http.put<UserSubscriptionResponse>(`${this.baseURL}/confirm/${subscriptionId}`,null);
+  }
 
 }

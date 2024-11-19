@@ -3,4 +3,5 @@ export interface FollowUpResponse{
   status:string;
   applicantName:string;
   jobPhaseName:string;
+  jobphase_id:number;
 }

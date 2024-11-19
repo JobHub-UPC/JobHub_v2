@@ -32,5 +32,23 @@ export class FollowUpService {
       })
     );
   }
+  updateStatus(followUpId: number, status: string): Observable<FollowUpResponse> {
+    return this.http.put<FollowUpResponse>(
+      `${this.baseURL}/${followUpId}/status`,
+      JSON.stringify(status), // Envolver como JSON primitivo
+      {
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+  }
+
+
+  updatePhaseFollowUp(followUpId: number, phaseId: number): Observable<FollowUpResponse> {
+    return this.http.put<FollowUpResponse>(`${this.baseURL}/${followUpId}/phase`,
+      JSON.stringify(phaseId),
+      {
+        headers: { 'Content-Type': 'application/json' }
+      });
+  }
 
 }

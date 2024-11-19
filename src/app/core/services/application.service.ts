@@ -17,4 +17,7 @@ export class ApplicationService {
   getApplicationsByApplicantId(applicantId:number):Observable<ApplicationResponse[]>{  // Ajusta el tipo de retorno según tu API
     return this.http.get<ApplicationResponse[]>(`${this.baseURL}/applicant/${applicantId}`);
   }
+  getApplicationsByJob(jobId:number):Observable<ApplicationResponse[]>{  // Ajusta el tipo de retorno según tu API
+    return this.http.get<ApplicationResponse[]>(`${this.baseURL}/job/${jobId}`);
+  }
 }

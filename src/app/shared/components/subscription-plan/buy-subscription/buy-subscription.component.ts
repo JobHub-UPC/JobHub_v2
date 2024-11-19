@@ -38,6 +38,7 @@ export class BuySubscriptionComponent {
       this.checkoutService.capturePaypalOrder(token)
         .subscribe(response => {
           if (response.completed) {
+            this.userSubscriptionService.confirmSubscription(response.purchaseId);
             this.router.navigate(['/subscription/subscriptionPay', response.purchaseId]);
           }
         })

@@ -16,4 +16,10 @@ export class JobPhaseService {
   getPhasesByJob(jobId: number):Observable<JobPhaseResponse[]> {
     return this.http.get<JobPhaseResponse[]>(`${this.baseURL}/job/${jobId}`);
   }
+  updateJobPhase(jobPhaseId: number, jobPhase: JobPhaseRequest):Observable<JobPhaseResponse> {
+    return this.http.put<JobPhaseResponse>(`${this.baseURL}/${jobPhaseId}`, jobPhase);
+  }
+  deletePhasesByJobId(jobPhaseId: number):Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/job/${jobPhaseId}`);
+  }
 }

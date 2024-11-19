@@ -18,4 +18,16 @@ export class JobService {
   getJobsDetails():Observable<JobDetailsModel[]>{
     return this.http.get<JobDetailsModel[]>(`${this.baseURL}`);
   }
+  deleteJob(jobId:number):Observable<void>{
+    return this.http.delete<void>(`${this.baseURL}/${jobId}`);
+  }
+  getJobById(jobId:number):Observable<JobDetailsModel>{
+    return this.http.get<JobDetailsModel>(`${this.baseURL}/${jobId}`);
+  }
+  update(jobId:number,updateRequest:JobCreateUpdateModel):Observable<JobDetailsModel>{
+    return this.http.put<JobDetailsModel>(`${this.baseURL}/${jobId}`,updateRequest);
+  }
+  getJobsByCompany(companyId:number):Observable<JobDetailsModel[]>{
+    return this.http.get<JobDetailsModel[]>(`${this.baseURL}/company/${companyId}`);
+  }
 }
